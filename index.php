@@ -1,3 +1,9 @@
+<?php
+
+require "controllers/functions.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,7 @@
 </head>
 
 <body>
-
+  <?php include "controllers/config.php"; ?>
 </body>
 
 </html>
