@@ -1,6 +1,13 @@
 <?php
 
+session_start();
 require "../controllers/functions.php";
+
+if ($_SESSION['level'] == '') {
+  # code...
+  header("location:../index.php");
+  exit;
+}
 
 ?>
 
@@ -26,7 +33,7 @@ require "../controllers/functions.php";
         <a href="index.php?page=profile">Edit Profile</a>
       </li>
       <li>
-        <a href="">Logout</a>
+        <a href="../logout.php">Logout</a>
       </li>
     </ul>
   </div>

@@ -13,8 +13,15 @@ if (isset($_POST['login'])) {
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row['password'])) {
       if ($row['level_id'] == 1) {
+        $_SESSION['username'] = $username;
+        $_SESSION['level'] = 'Admin';
+
         header("location: admin/index.php");
       } else if ($row['level_id'] == 2) {
+        $_SESSION['username'] = $username;
+        $_SESSION['user_id'] = $row['id_user'];
+        $_SESSION['level'] = 'Admin';
+
         header("location: user/index.php");
       }
     }
