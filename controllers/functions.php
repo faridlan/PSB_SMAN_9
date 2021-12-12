@@ -47,3 +47,26 @@ function signup($data)
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
+
+function tambah_biodata($data)
+{
+  global $conn;
+
+  $fullname = $data['fullname'];
+  $nisn = $data['nisn'];
+  $alamat = $data['alamat'];
+  $jenis_kelamin = $data['jenis_kelamin'];
+  $agama = $data['agama'];
+  $tempat_lahir = $data['tempat_lahir'];
+  $tgl_lahir = $data['tgl_lahir'];
+  $asal_sekolah = $data['asal_sekolah'];
+  $no_telp = $data['no_telp'];
+  $nama_ortu = $data['nama_ortu'];
+  $user_id = $data['user_id'];
+
+  $query = "INSERT INTO biodata VALUES ('','$fullname', '$nisn', '$alamat', '$jenis_kelamin', '$agama', '$tempat_lahir', 
+            '$tgl_lahir', '$asal_sekolah', '$no_telp',
+            '$nama_ortu', '$user_id')";
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}

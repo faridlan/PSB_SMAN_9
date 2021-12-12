@@ -1,3 +1,19 @@
+<?php
+
+if (isset($_POST['submit'])) {
+  if (tambah_biodata($_POST) > 0) {
+    echo "
+    <script> 
+      alert('Data Berhasil Di Tambahkan');
+    </script>
+    ";
+  } else {
+    echo mysqli_error($conn);
+  }
+}
+
+?>
+
 <h1>Tambah Biodata</h1>
 
 <form action="" method="POST">
@@ -17,19 +33,19 @@
     <li>
       <label for="jenis_kelamin">jenis_kelamin</label>
       <select id="jenis_kelamin" name="jenis_kelamin">
-        <option value="laki-laki">laki-laki</option>
-        <option value="perempuan">perempuan</option>
+        <option value="Laki-Laki">Laki-Laki</option>
+        <option value="Perempuan">Perempuan</option>
       </select>
     </li>
     <li>
-      <label for="agama">agama</label>
+      <label for="agama">Agama</label>
       <select id="agama" name="agama">
-        <option value="islam">islam</option>
-        <option value="kristen">kristen</option>
-        <option value="katholik">katholik</option>
-        <option value="hindu">hindu</option>
-        <option value="budha">budha</option>
-        <option value="konghucu">konghucu</option>
+        <option value="Islam">Islam</option>
+        <option value="Kristen">Kristen</option>
+        <option value="Katholik">Katholik</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Budha">Budha</option>
+        <option value="Konghucu">Konghucu</option>
       </select>
     </li>
     <li>
@@ -51,6 +67,9 @@
     <li>
       <label for="nama_ortu">nama_ortu</label>
       <input type="text" id="nama_ortu" name="nama_ortu">
+    </li>
+    <li>
+      <input type="text" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
     </li>
     <li>
       <button type="submit" name="submit">Submit</button>
