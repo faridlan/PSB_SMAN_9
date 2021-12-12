@@ -4,10 +4,10 @@ $conn = mysqli_connect("localhost", "root", "", "psb_online_9");
 function query($query)
 {
   global $conn;
-  $reuslt = mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
   $rows = [];
-  while ($row = mysqli_fetch_assoc($reuslt)) {
-    $rows = $row;
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
   }
   return  $rows;
 }
