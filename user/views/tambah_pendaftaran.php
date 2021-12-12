@@ -1,3 +1,19 @@
+<?php
+
+if (isset($_POST['submit'])) {
+  if (tambah_pendaftaran($_POST) > 0) {
+    echo "
+      <script>
+        alert('Data Berhasil Di Tambahkan');
+      </script>
+    ";
+  } else {
+    echo mysqli_error($conn);
+  }
+}
+
+?>
+
 <h1>Tambah Pendaftaran</h1>
 
 <style>
@@ -34,6 +50,9 @@
     <li>
       <label for="ijazah">ijazah</label>
       <input type="file" id="ijazah" name="ijazah">
+    </li>
+    <li>
+      <input type="text" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
     </li>
     <li>
       <button type="submit" name="submit">Submit</button>

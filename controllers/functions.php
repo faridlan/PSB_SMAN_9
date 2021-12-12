@@ -70,3 +70,83 @@ function tambah_biodata($data)
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
+
+function tambah_pendaftaran($data)
+{
+  global $conn;
+
+  $queryRes = "SELECT max(id_pendaftaran) as maxKode From pendaftaran";
+  $result = mysqli_query($conn, $queryRes);
+  $row = mysqli_fetch_assoc($result);
+
+  $maxKode = $row['maxKode'];
+  $i = (int) substr($maxKode, 4, 3);
+  $i++;
+  $char = '2021';
+  $resKode = $char . sprintf('%03s', $i);
+
+  $jurusan_id = $data['jurusan_id'];
+  $nilai_mtk = $data['nilai_mtk'];
+  $nilai_ipa = $data['nilai_ipa'];
+  $nilai_ing = $data['nilai_ing'];
+  $nilai_ind = $data['nilai_ind'];
+  $user_id = $data['user_id'];
+
+  $ijazah = upload_pdf();
+  if (!$ijazah) {
+    return false;
+  }
+
+  $query = "INSERT INTO pendaftaran (id_pendaftaran,jurusan_id, nilai_mtk, nilai_ipa, nilai_ing, nilai_ind, ijazah, user_id) VALUES
+            ('$resKode','$jurusan_id', '$nilai_mtk', '$nilai_ipa', '$nilai_ing', '$nilai_ind',
+            '$ijazah', '$user_id')";
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+
+function upload_pdf()
+{
+  $nameFile = $_FILES['ijazah']['name'];
+  $sizeFile = $_FILES['ijazah']['size'];
+  $error = $_FILES['ijazah']['error'];
+  $tmpName = $_FILES['ijazah']['tmp_name'];
+
+  if ($error === 4) {
+    echo "
+    <script>
+      alert('Pilih File Terlebih Dahulu');
+    </script>
+    ";
+    return false;
+  }
+
+  $ektensiFileValid = ['pdf'];
+  $ektensiFile = explode('.', $nameFile);
+  $ektensiFile = strtolower(end($ektensiFile));
+  if (!in_array($ektensiFile, $ektensiFileValid)) {
+    echo "
+    <script>
+      alert('Yang Anda Upload Bukan PDF!!');
+    </script>
+    ";
+  }
+
+  if ($sizeFile > 1000000) {
+    echo "
+    <script>
+      alert('File Terlalu Besar');
+    </script>
+    ";
+  }
+
+  // $newNameFile = uniqid();
+  // $newNameFile .= '.';
+  // $newNameFile .= $ektensiFile;
+
+  $destination_path = getcwd() . DIRECTORY_SEPARATOR . '../file/pdf/';
+  $target_path = $destination_path . basename($nameFile);
+
+  move_uploaded_file($tmpName, $target_path);
+
+  return $nameFile;
+}
