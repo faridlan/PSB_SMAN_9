@@ -42,6 +42,8 @@ if ($_SESSION['level'] == '') {
       <li><a href="index.php?page=home">home</a> </li>
       <li><a href="index.php?page=biodata">tambah biodata</a> </li>
       <li><a href="index.php?page=pendaftaran">tambah pendaftaran </a> </li>
+      <li><a href="index.php?page=view_biodata">biodata </a> </li>
+      <li><a href="index.php?page=view_pendaftaran">pendaftaran </a> </li>
       <li><a href="index.php?page=cetak">cetak kartu</a> </li>
     </ul>
   </div>

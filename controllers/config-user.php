@@ -17,6 +17,18 @@ switch ($page) {
   case 'profile':
     include '../user/views/edit_user.php';
     break;
+  case 'view_pendaftaran':
+    include '../user/views/view_pendaftaran.php';
+    break;
+  case 'view_biodata':
+    include '../user/views/view_biodata.php';
+    break;
+  case 'update_biodata':
+    include '../user/views/update_biodata.php';
+    break;
+  case 'update_pendaftaran':
+    include '../user/views/update_pendaftaran.php';
+    break;
   default:
     include '../user/views/home.php';
     break;
