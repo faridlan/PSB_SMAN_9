@@ -15,6 +15,9 @@ switch ($page) {
   case 'detail':
     include "../admin/views/detail_users.php";
     break;
+  case 'update':
+    include "../admin/views/ubah_status.php";
+    break;
 
   default:
     include "../admin/views/home.php";

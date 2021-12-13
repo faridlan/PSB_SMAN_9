@@ -104,6 +104,19 @@ function tambah_pendaftaran($data)
   return mysqli_affected_rows($conn);
 }
 
+function update_status($data)
+{
+  global $conn;
+
+  $id_pendaftaran = $data['id_pendaftaran'];
+  $status = $data['status'];
+
+  $query = "UPDATE pendaftaran SET status_id = '$status' WHERE id_pendaftaran = '$id_pendaftaran'";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+
 function upload_pdf()
 {
   $nameFile = $_FILES['ijazah']['name'];
