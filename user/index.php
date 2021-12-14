@@ -9,6 +9,9 @@ if ($_SESSION['level'] == '') {
   exit;
 }
 
+$biodata1 = mysqli_query($conn, "SELECT * FROM biodata WHERE user_id = '" . $_SESSION['user_id'] . "'");
+$pendaftaran1 = mysqli_query($conn, "SELECT * FROM pendaftaran WHERE user_id = '" . $_SESSION['user_id'] . "'");
+
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +26,15 @@ if ($_SESSION['level'] == '') {
     label {
       display: block;
     }
+
+    #cetak {
+      display: none;
+    }
   </style>
 </head>
 
 <body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <div class="navbar" style="float: right; margin-right: 50px">
     <ul>
       <li>
@@ -44,12 +52,22 @@ if ($_SESSION['level'] == '') {
       <li><a href="index.php?page=pendaftaran">tambah pendaftaran </a> </li>
       <li><a href="index.php?page=view_biodata">biodata </a> </li>
       <li><a href="index.php?page=view_pendaftaran">pendaftaran </a> </li>
-      <li><a href="index.php?page=cetak">cetak kartu</a> </li>
+      <li id="cetak"><a href="index.php?page=cetak">cetak kartu</a> </li>
     </ul>
   </div>
   <div class="content">
     <?php include "../controllers/config-user.php" ?>
   </div>
 </body>
+
+<?php if (mysqli_num_rows($pendaftaran1) > 0 && mysqli_num_rows($biodata1) > 0) { ?>
+
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $('#cetak').css('display', 'block');
+    });
+  </script>
+
+<?php } ?>
 
 </html>
