@@ -166,6 +166,71 @@ function update_pendaftaran($data)
   return mysqli_affected_rows($conn);
 }
 
+function edit_user($data)
+{
+  global $conn;
+
+  $id_user = $data['id_user'];
+  $email = $data['email'];
+  $old_image = $data['old_image'];
+  if ($_FILES['image']['error'] === 4) {
+    $image = $old_image;
+  } else {
+    $image = upload_img();
+  }
+
+  $query = "UPDATE users SET email='$email', image='$image' WHERE id_user = '$id_user'";
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+
+function upload_img()
+{
+  $nameFile = $_FILES['image']['name'];
+  $sizeFile = $_FILES['image']['size'];
+  $error = $_FILES['image']['error'];
+  $tmpName = $_FILES['image']['tmp_name'];
+
+  if ($error === 4) {
+    echo "
+    <script>
+      alert('Pilih File Terlebih Dahulu');
+    </script>
+    ";
+    return false;
+  }
+
+  $ektensiFileValid = ['jpg', 'jpeg', 'png'];
+  $ektensiFile = explode('.', $nameFile);
+  $ektensiFile = strtolower(end($ektensiFile));
+  if (!in_array($ektensiFile, $ektensiFileValid)) {
+    echo "
+    <script>
+      alert('Yang Anda Upload Bukan Image!!');
+    </script>
+    ";
+  }
+
+  if ($sizeFile > 10000000) {
+    echo "
+    <script>
+      alert('File Terlalu Besar');
+    </script>
+    ";
+  }
+
+  $newNameFile = uniqid();
+  $newNameFile .= '.';
+  $newNameFile .= $ektensiFile;
+
+  // $destination_path = getcwd() . DIRECTORY_SEPARATOR . '../file/image/';
+  // $target_path = $destination_path . basename($newNameFile);
+
+  move_uploaded_file($tmpName, '../file/img/' . $newNameFile);
+
+  return $newNameFile;
+}
+
 function upload_pdf()
 {
   $nameFile = $_FILES['ijazah']['name'];
