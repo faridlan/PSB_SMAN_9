@@ -305,31 +305,35 @@ $reg = mysqli_fetch_assoc($pendaftaran);
 
 <?php } ?>
 
-<?php if ($row['nama_status'] == "Lulus" && mysqli_num_rows($biodata) > 0) { ?>
+<?php if (mysqli_num_rows($pendaftaran) > 0 && mysqli_num_rows($biodata) > 0) { ?>
 
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      $('#cetak_kartu').css('display', 'block');
-      $('#lulus').css('display', 'block');
-    });
-  </script>
+  <?php if ($row['nama_status'] == "Lulus" && mysqli_num_rows($biodata) > 0) { ?>
 
-<?php } else if ($row['nama_status'] == "Tidak Lulus" && mysqli_num_rows($biodata) > 0) { ?>
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      $('#tidak_lulus').css('display', 'block');
-    });
-  </script>
-<?php } else if ($row['nama_status'] == "Di Cadangkan" && mysqli_num_rows($biodata) > 0) { ?>
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      $('#dicadangkan').css('display', 'block');
-    });
-  </script>
-<?php } else { ?>
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      $('#menunggu').css('display', 'block');
-    });
-  </script>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#cetak_kartu').css('display', 'block');
+        $('#lulus').css('display', 'block');
+      });
+    </script>
+
+  <?php } else if ($row['nama_status'] == "Tidak Lulus" && mysqli_num_rows($biodata) > 0) { ?>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#tidak_lulus').css('display', 'block');
+      });
+    </script>
+  <?php } else if ($row['nama_status'] == "Di Cadangkan" && mysqli_num_rows($biodata) > 0) { ?>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#dicadangkan').css('display', 'block');
+      });
+    </script>
+  <?php } else { ?>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#menunggu').css('display', 'block');
+      });
+    </script>
+  <?php } ?>
+
 <?php } ?>

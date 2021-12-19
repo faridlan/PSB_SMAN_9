@@ -266,14 +266,14 @@ function upload_pdf()
     ";
   }
 
-  // $newNameFile = uniqid();
-  // $newNameFile .= '.';
-  // $newNameFile .= $ektensiFile;
+  $newNameFile = uniqid();
+  $newNameFile .= '.';
+  $newNameFile .= $ektensiFile;
 
   $destination_path = getcwd() . DIRECTORY_SEPARATOR . '../file/pdf/';
-  $target_path = $destination_path . basename($nameFile);
+  $target_path = $destination_path . basename($newNameFile);
 
   move_uploaded_file($tmpName, $target_path);
 
-  return $nameFile;
+  return $newNameFile;
 }

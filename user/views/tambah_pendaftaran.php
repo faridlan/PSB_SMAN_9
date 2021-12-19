@@ -23,12 +23,13 @@ if (isset($_POST['submit'])) {
 </style>
 <div class="container">
   <form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="jurusan_id">Pilih Jurusan</label>
         <select class="form-control" id="jurusan_id" name="jurusan_id">
-          <option>IPA</option>
-          <option>IPS</option>
+          <option value="1">IPA</option>
+          <option value="2">IPS</option>
         </select>
       </div>
       <div class="form-group col-md-6">
@@ -48,8 +49,8 @@ if (isset($_POST['submit'])) {
         <input type="text" class="form-control" id="nilai_ind" name="nilai_ind" placeholder="Masukan Nilai B Indonesia">
       </div>
       <div class="form-group col-md-6">
-        <label for="Ijazah">Ijazah</label>
-        <input type="file" class="form-control" id="Ijazah" name="Ijazah" placeholder="Masukan Nama Orang Tua">
+        <label for="ijazah">Ijazah</label>
+        <input type="file" class="form-control" id="ijazah" name="ijazah" placeholder="Masukan Nama Orang Tua">
       </div>
     </div>
     <button type="submit" class="btn btn-primary" name="submit">Submit</button>

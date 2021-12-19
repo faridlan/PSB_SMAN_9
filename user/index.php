@@ -167,15 +167,20 @@ $row = mysqli_fetch_assoc($status1);
   </script>
 <?php } ?>
 
-<?php if ($row['nama_status'] == "Lulus" && mysqli_num_rows($biodata1) > 0) { ?>
+<?php if (mysqli_num_rows($pendaftaran1) > 0 && mysqli_num_rows($biodata1) > 0) { ?>
 
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      $('#cetak').css('display', 'block');
-      // $('#lulus').css('display', 'block');
-    });
-  </script>
+  <?php if ($row['nama_status'] == "Lulus" && mysqli_num_rows($biodata1) > 0) { ?>
+
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#cetak').css('display', 'block');
+        // $('#lulus').css('display', 'block');
+      });
+    </script>
+
+  <?php } ?>
 
 <?php } ?>
+
 
 </html>
