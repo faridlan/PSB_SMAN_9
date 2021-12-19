@@ -18,24 +18,26 @@ if (isset($_POST['submit'])) {
 ?>
 
 <h1>Edit Profile</h1>
-<form action="" method="POST" enctype="multipart/form-data">
-  <ul>
-    <input type="hidden" id="id_user" name="id_user" value="<?= $user['id_user'] ?>">
-    <li>
-      <label for="username">username</label>
-      <input type="text" id="username" name="username" value="<?= $user['username'] ?>">
-    </li>
-    <li>
-      <label for="email">email</label>
-      <input type="text" id="email" name="email" value="<?= $user['email'] ?>">
-    </li>
-    <li>
-      <img src="../file/img/<?= $user['image'] ?>" width="100px">
-      <input type="file" id="image" name="image">
-      <input type="hidden" id="old_image" name="old_image">
-    </li>
-    <li>
-      <button type="submit" name="submit">Submit</button>
-    </li>
-  </ul>
+<div class="container">
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-row">
+      <input type="hidden" id="id_user" name="id_user" value="<?= $user['id_user'] ?>">
+      <div class="form-group col-md-7">
+        <label for="username">username</label>
+        <input type="text" id="username" class="form-control" name="username" value="<?= $user['username'] ?>" disabled>
+      </div>
+      <div class="form-group col-md-7">
+        <label for="email">email</label>
+        <input type="text" id="email" class="form-control" name="email" value="<?= $user['email'] ?>">
+      </div>
+      <div class="form-group col-md-7">
+        <img src="../file/img/<?= $user['image'] ?>" width="100px" style="margin-bottom: 10px;">
+        <input type="file" id="image" name="image">
+        <input type="hidden" id="old_image" name="old_image">
+      </div>
+      <div class="form-group col-md-7">
+        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+      </div>
+    </div>
+</div>
 </form>

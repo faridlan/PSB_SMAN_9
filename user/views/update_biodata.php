@@ -19,30 +19,30 @@ $biodata = query("SELECT * FROM biodata WHERE user_id= '" . $_SESSION['user_id']
 
 <h1>Update Biodata</h1>
 
-<form action="" method="POST">
-  <ul>
-    <li>
+<div class="container">
+  <form action="" method="POST">
+    <div class="form-group col-md-6">
       <label for="fullname">fullname</label>
-      <input type="text" id="fullname" name="fullname" value="<?= $biodata['fullname'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="fullname" name="fullname" value="<?= $biodata['fullname'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="nisn">nisn</label>
-      <input type="text" id="nisn" name="nisn" value="<?= $biodata['nisn'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="nisn" name="nisn" value="<?= $biodata['nisn'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="alamat">alamat</label>
-      <input type="text" id="alamat" name="alamat" value="<?= $biodata['alamat'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $biodata['alamat'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="jenis_kelamin">jenis_kelamin</label>
-      <select id="jenis_kelamin" name="jenis_kelamin">
+      <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
         <option value="Laki-Laki" <?php if ($biodata['jenis_kelamin'] == "Laki-Laki") echo 'selected="selected"'; ?>>Laki-Laki</option>
         <option value="Perempuan" <?php if ($biodata['jenis_kelamin'] == "Perempuan") echo 'selected="selected"'; ?>>Perempuan</option>
       </select>
-    </li>
-    <li>
+    </div>
+    <div class="form-group col-md-6">
       <label for="agama">Agama</label>
-      <select id="agama" name="agama">
+      <select class="form-control" id="agama" name="agama">
         <option value="Islam" <?php if ($biodata['agama'] == "Islam") echo 'selected="selected"'; ?>>Islam</option>
         <option value="Kristen" <?php if ($biodata['agama'] == "Kristen") echo 'selected="selected"'; ?>>Kristen</option>
         <option value="Katholik" <?php if ($biodata['agama'] == "Katholik") echo 'selected="selected"'; ?>>Katholik</option>
@@ -50,28 +50,28 @@ $biodata = query("SELECT * FROM biodata WHERE user_id= '" . $_SESSION['user_id']
         <option value="Budha" <?php if ($biodata['agama'] == "Budha") echo 'selected="selected"'; ?>>Budha</option>
         <option value="Konghucu" <?php if ($biodata['agama'] == "Konghucu") echo 'selected="selected"'; ?>>Konghucu</option>
       </select>
-    </li>
-    <li>
+    </div>
+    <div class="form-group col-md-6">
       <label for="tempat_lahir">tempat_lahir</label>
-      <input type="text" id="tempat_lahir" name="tempat_lahir" value="<?= $biodata['tempat_lahir'] ?>">
-    </li>
-    <li>
+      <input type="text" id="tempat_lahir" class=" form-control" name="tempat_lahir" value="<?= $biodata['tempat_lahir'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="asal_sekolah">asal_sekolah</label>
-      <input type="text" id="asal_sekolah" name="asal_sekolah" value="<?= $biodata['asal_sekolah'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="asal_sekolah" name="asal_sekolah" value="<?= $biodata['asal_sekolah'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="no_telp">no_telp</label>
-      <input type="text" id="no_telp" name="no_telp" value="<?= $biodata['no_telp'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?= $biodata['no_telp'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="nama_ortu">nama_ortu</label>
-      <input type="text" id="nama_ortu" name="nama_ortu" value="<?= $biodata['nama_ortu'] ?>">
-    </li>
-    <li>
-      <input type="text" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
-    </li>
-    <li>
-      <button type="submit" name="submit">Submit</button>
-    </li>
-  </ul>
-</form>
+      <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" value="<?= $biodata['nama_ortu'] ?>">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="hidden" id="user_id" class="form-control" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    </div>
+  </form>
+</div>

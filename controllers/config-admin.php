@@ -18,6 +18,9 @@ switch ($page) {
   case 'update':
     include "../admin/views/ubah_status.php";
     break;
+  case 'download':
+    include "../admin/views/download_pdf.php";
+    break;
 
   default:
     include "../admin/views/home.php";

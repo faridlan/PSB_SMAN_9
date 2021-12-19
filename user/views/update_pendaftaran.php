@@ -21,39 +21,37 @@ $pendaftaran = query("SELECT * FROM pendaftaran WHERE user_id = '" . $_SESSION['
 
 <form action="" method="POST" enctype="multipart/form-data">
   <ul>
-    <li>
+    <div class="form-group col-md-6">
       <label for="jurusan_id">jurusan</label>
-      <select id="jurusan_id" name="jurusan_id">
+      <select class="form-control" id="jurusan_id" name="jurusan_id">
         <option value="1" <?php if ($pendaftaran['jurusan_id'] == 1) echo 'selected="selected"'; ?>>IPA</option>
         <option value="2" <?php if ($pendaftaran['jurusan_id'] == 2) echo 'selected="selected"'; ?>>IPS</option>
       </select>
-    </li>
-    <li>
+    </div>
+    <div class="form-group col-md-6">
       <label for="nilai_mtk">nilai mtk</label>
-      <input type="text" id="nilai_mtk" name="nilai_mtk" value="<?= $pendaftaran['nilai_mtk'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="nilai_mtk" name="nilai_mtk" value="<?= $pendaftaran['nilai_mtk'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="nilai_ipa">nilai ipa</label>
-      <input type="text" id="nilai_ipa" name="nilai_ipa" value="<?= $pendaftaran['nilai_ipa'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="nilai_ipa" name="nilai_ipa" value="<?= $pendaftaran['nilai_ipa'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="nilai_ing">nilai ing</label>
-      <input type="text" id="nilai_ing" name="nilai_ing" value="<?= $pendaftaran['nilai_ing'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="nilai_ing" name="nilai_ing" value="<?= $pendaftaran['nilai_ing'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="nilai_ind">nilai ind</label>
-      <input type="text" id="nilai_ind" name="nilai_ind" value="<?= $pendaftaran['nilai_ind'] ?>">
-    </li>
-    <li>
+      <input type="text" class="form-control" id="nilai_ind" name="nilai_ind" value="<?= $pendaftaran['nilai_ind'] ?>">
+    </div>
+    <div class="form-group col-md-6">
       <label for="ijazah">ijazah</label>
-      <input type="file" id="ijazah" name="ijazah">
+      <input type="file" class="form-control" id="ijazah" name="ijazah">
       <input type="hidden" id="ijazah_lama" name="ijazah_lama" value="<?= $pendaftaran['ijazah'] ?>">
-    </li>
-    <li>
-      <input type="text" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
-    </li>
-    <li>
+    </div>
+    <input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+    <div class="form-group col-md-6">
       <button type="submit" name="submit">Submit</button>
-    </li>
+    </div>
   </ul>
 </form>
