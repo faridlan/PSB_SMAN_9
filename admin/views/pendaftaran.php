@@ -14,6 +14,7 @@ $pendaftaran = query("SELECT p.id_pendaftaran, j.nama_jurusan, p.nilai_mtk, p.ni
 <table border="1" cellpadding="10" cellspacing="0">
   <tr>
     <td>id_pendaftaran</td>
+    <td>user</td>
     <td>jurusan</td>
     <td>nilai_mtk</td>
     <td>nilai_ipa</td>
@@ -21,12 +22,12 @@ $pendaftaran = query("SELECT p.id_pendaftaran, j.nama_jurusan, p.nilai_mtk, p.ni
     <td>nilai_ind</td>
     <td>ijazah</td>
     <td>status</td>
-    <td>user</td>
     <td>Action</td>
   </tr>
   <?php foreach ($pendaftaran as $row) : ?>
     <tr>
       <td><?= $row['id_pendaftaran'] ?></td>
+      <td><?= $row['username'] ?></td>
       <td><?= $row['nama_jurusan'] ?></td>
       <td><?= $row['nilai_mtk'] ?></td>
       <td><?= $row['nilai_ipa'] ?></td>
@@ -34,8 +35,10 @@ $pendaftaran = query("SELECT p.id_pendaftaran, j.nama_jurusan, p.nilai_mtk, p.ni
       <td><?= $row['nilai_ind'] ?></td>
       <td><?= $row['ijazah'] ?></td>
       <td><?= $row['nama_status'] ?></td>
-      <td><?= $row['username'] ?></td>
-      <td><a href="index.php?page=update&id=<?= $row['id_pendaftaran'] ?>">Ubah Status</a></td>
+      <td>
+        <a href="index.php?page=update&id=<?= $row['id_pendaftaran'] ?>">Ubah Status</a>
+        <a href="index.php?page=download&filename=<?= $row['ijazah'] ?>" target="_blank">Download Ijazah</a>
+      </td>
     </tr>
   <?php endforeach ?>
 </table>
