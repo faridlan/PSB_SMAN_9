@@ -37,7 +37,7 @@ if (isset($_POST['login'])) {
   <?php if (isset($error)) : ?>
     <h3 style="color: red;"></h3>
   <?php endif; ?>
-  <form action="" method="POST">
+  <!-- <form action="" method="POST">
     <ul>
       <li>
         <label for="username">username</label>
@@ -56,4 +56,29 @@ if (isset($_POST['login'])) {
         <button type="submit" name="login">Login</button>
       </li>
     </ul>
+  </form> -->
+
+  <form action="" method="post" class="needs-validation" novalidate>
+    <div class="row px-3">
+      <label for="username" class="mb-1">
+        <h6 class="mb-0 text-sm">Username</h6>
+      </label>
+      <input type="text" name="username" class="form-control" id="username" placeholder="Username" required />
+      <div class="invalid-feedback">Username Tidak Tersedia!</div>
+    </div>
+    <div class="row px-3 mt-4">
+      <label for="password" class="mb-1">
+        <h6 class="mb-0 text-sm">Password</h6>
+      </label>
+      <input type="text" name="password" class="form-control" id="password" placeholder="Password" required />
+      <div class="invalid-feedback">
+        Password
+      </div>
+    </div>
+    <div class="row mb-3 px-3 mt-4">
+      <button type="submit" class="btn btn-green text-center" name="login">
+        Login
+      </button>
+    </div>
+    <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger" href="index.php?page=signup">Register</a></small> </div>
   </form>
