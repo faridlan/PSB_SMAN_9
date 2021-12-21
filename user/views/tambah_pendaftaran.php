@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
     echo "
       <script>
         alert('Data Berhasil Di Tambahkan');
+        document.location.href = 'index.php?page=home';
       </script>
     ";
   } else {
@@ -12,9 +13,19 @@ if (isset($_POST['submit'])) {
   }
 }
 
+$pendaftaran = mysqli_query($conn, "SELECT * FROM pendaftaran WHERE user_id = '" . $_SESSION['user_id'] . "'");
+
+if (mysqli_num_rows($pendaftaran) > 0) {
+  echo "
+  <script>
+    document.location.href = 'index.php?page=home';
+  </script>
+";
+}
+
 ?>
 
-<h1>Tambah Pendaftaran</h1>
+<h1 style="margin-top: 80px; margin-left:50px; margin-bottom: 30px;">Tambah Pendaftaran</h1>
 
 <style>
   label {
@@ -50,7 +61,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="form-group col-md-6">
         <label for="ijazah">Ijazah</label>
-        <input type="file" class="form-control" id="ijazah" name="ijazah" placeholder="Masukan Nama Orang Tua">
+        <input type="file" id="ijazah" name="ijazah" placeholder="Masukan Nama Orang Tua">
       </div>
     </div>
     <button type="submit" class="btn btn-primary" name="submit">Submit</button>

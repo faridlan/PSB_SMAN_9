@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
     echo "
     <script> 
       alert('Data Berhasil Di Tambahkan');
+      document.location.href = 'index.php?page=home';
     </script>
     ";
   } else {
@@ -12,9 +13,19 @@ if (isset($_POST['submit'])) {
   }
 }
 
+$biodata = mysqli_query($conn, "SELECT * FROM biodata WHERE user_id = '" . $_SESSION['user_id'] . "'");
+
+if (mysqli_num_rows($biodata) > 0) {
+  echo "
+  <script>
+    document.location.href = 'index.php?page=home';
+  </script>
+";
+}
+
 ?>
 
-<h1>Tambah Biodata</h1>
+<h1 style="margin-top: 80px; margin-left:50px; margin-bottom: 30px;">Tambah Biodata</h1>
 <div class="container">
   <form action="" method="POST">
     <input type="hidden" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">
@@ -29,7 +40,7 @@ if (isset($_POST['submit'])) {
       </div>
       <div class="form-group col-md-6">
         <label for="alamat">Alamat</label>
-        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="name@example.com">
+        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat">
       </div>
       <div class="form-group col-md-6">
         <label for="jenis_kelamin">Jenis Kelamin</label>

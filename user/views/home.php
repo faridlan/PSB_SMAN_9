@@ -122,7 +122,7 @@ $reg = mysqli_fetch_assoc($pendaftaran);
   }
 
   #pendaftaran_empty {
-    display: block;
+    display: none;
   }
 
   #data_biodata {
@@ -143,7 +143,7 @@ $reg = mysqli_fetch_assoc($pendaftaran);
 </style>
 
 <div class="container">
-  <div class="" style="display: block;">
+  <div class="" style="display: block; margin-top: 20px;">
     <div class="alert alert-dark" role="alert" id="menunggu" style="display: none;">
       <h4 class="alert-heading">Status : Menunggu</h4>
       <p>Silahkan Tunggu Sampai Pengumumuan Selanjutnya</p>
@@ -180,7 +180,20 @@ $reg = mysqli_fetch_assoc($pendaftaran);
       <a href="index.php?page=profile">Edit</a>
     </div>
   </div>
-
+  <div class="row-md-12" style="margin-bottom: 10px;">
+    <div class="col-md6">
+      <h5>*Petunjuk Pendaftaran Online SMAN 9 Tasikmalaya</h5>
+    </div>
+    <div class="col-md6">
+      <h5>1. Isi dan Lengkapi Form Biodata Terlebih Dahulu</h5>
+    </div>
+    <div class="col-md6">
+      <h5>2. Isi dan Lengkapi Form Pendafataran</h5>
+    </div>
+    <div class="col-md6">
+      <h5>* Ket : Kedua Form Harus Terisi dengan Lengkap</h5>
+    </div>
+  </div>
 
   <div class="row-md-3" id="pendaftaran">
     <div class="col-md-3">
@@ -200,9 +213,9 @@ $reg = mysqli_fetch_assoc($pendaftaran);
           <p>Silahkan isi form pendaftaran dengan lengkap</p>
         </div>
       </a>
-      <a href="index.php?page=cetak" id="cetak_kartu" style="margin-top: 10px;">
-        <div class="card-counter danger">
-          <i class="fa fa-times"></i>
+      <a href="cetak_pdf.php" id="cetak_kartu" style="margin-top: 10px;" target="_blank">
+        <div class="card-counter primary" style="padding-top:50px;">
+          <!-- <i class="fa fa-times"></i> -->
           <!-- <span class="count-numbers">599</span> -->
           <span class="count-name">Cetak Kartu</span>
           <p>Cetak Kartu Untuk Calon Siswa</p>
@@ -234,8 +247,8 @@ $reg = mysqli_fetch_assoc($pendaftaran);
     <div class="row-md-3">
       <div class="col-md-3">
         <a href="index.php?page=view_biodata" id="data_biodata">
-          <div class="card-counter success">
-            <i class="fa fa-check"></i>
+          <div class="card-counter primary" style="padding-top:50px;">
+            <!-- <i class="fa fa-database" style="display: none;"></i> -->
             <!-- <span class="count-numbers">12</span> -->
             <span class="count-name">Data Biodata</span>
             <p>Data Biodata Calon Siswa</p>
@@ -246,8 +259,8 @@ $reg = mysqli_fetch_assoc($pendaftaran);
       <div class="row-md-3">
         <div class="col-md-3">
           <a href="index.php?page=view_pendaftaran" id="data_pendaftaran">
-            <div class="card-counter success">
-              <i class="fa fa-check"></i>
+            <div class="card-counter primary" style="padding-top:50px;">
+              <!-- <i class="fa fa-database"></i> -->
               <!-- <span class="count-numbers">12</span> -->
               <span class="count-name">Data Pendaftaran</span>
               <p>Data Pendaftaran Calon Siswa</p>
@@ -276,7 +289,7 @@ $reg = mysqli_fetch_assoc($pendaftaran);
     $(document).ready(function() {
       $('#biodata_empty').css('display', 'none');
       $('#biodata_done').css('display', 'block');
-      $('#data_biodata').css('display', 'block');
+      $('#pendaftaran_empty').css('display', 'block');
     });
   </script>
 
@@ -288,7 +301,6 @@ $reg = mysqli_fetch_assoc($pendaftaran);
     $(document).ready(function() {
       $('#pendaftaran_empty').css('display', 'none');
       $('#pendaftaran_done').css('display', 'block');
-      $('#data_pendaftaran').css('display', 'block');
 
     });
   </script>
@@ -299,7 +311,8 @@ $reg = mysqli_fetch_assoc($pendaftaran);
 
   <script type='text/javascript'>
     $(document).ready(function() {
-      $('#link3').css('display', 'block');
+      $('#data_biodata').css('display', 'block');
+      $('#data_pendaftaran').css('display', 'block');
     });
   </script>
 

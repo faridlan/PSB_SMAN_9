@@ -17,7 +17,7 @@ $pendaftaran = query("SELECT * FROM pendaftaran WHERE user_id = '" . $_SESSION['
 
 ?>
 
-<h1>UPDATE PENDAFTARAN</h1>
+<h1 style="margin-top: 80px; margin-left:50px; margin-bottom: 30px;">UPDATE PENDAFTARAN</h1>
 
 <form action="" method="POST" enctype="multipart/form-data">
   <ul>
@@ -46,7 +46,7 @@ $pendaftaran = query("SELECT * FROM pendaftaran WHERE user_id = '" . $_SESSION['
     </div>
     <div class="form-group col-md-6">
       <label for="ijazah">ijazah</label>
-      <input type="file" class="form-control" id="ijazah" name="ijazah">
+      <input type="file" id="ijazah" name="ijazah">
       <input type="hidden" id="ijazah_lama" name="ijazah_lama" value="<?= $pendaftaran['ijazah'] ?>">
     </div>
     <input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= $_SESSION['user_id'] ?>">

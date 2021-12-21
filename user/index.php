@@ -17,7 +17,7 @@ $status1 =  mysqli_query($conn, "SELECT p.id_pendaftaran,
                                 INNER JOIN status as s ON p.status_id = s.id_status
                                 WHERE p.user_id = '" . $_SESSION['user_id'] . "'");
 
-$row = mysqli_fetch_assoc($status1);
+$row1 = mysqli_fetch_assoc($status1);
 
 ?>
 
@@ -36,7 +36,9 @@ $row = mysqli_fetch_assoc($status1);
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script> -->
-  <title>PSB ONLINE</title>
+  <title>PSB SMAN 9</title>
+  <link rel="icon" type="image/x-icon" href="../logo.ico">
+
   <style>
     #cetak {
       display: none;
@@ -97,20 +99,22 @@ $row = mysqli_fetch_assoc($status1);
       <!-- Main Menu -->
       <div class="side-menu-container">
         <ul class="nav navbar-nav">
-          <li class="active">
+          <li class="<?php if ($page == "home") {
+                        echo "active";
+                      } ?>">
             <a href="index.php?page=home"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
           <li>
-            <a href="index.php?page=biodata"><i class="fa fa-puzzle-piece"></i> Form Biodata</a>
+            <a href="index.php?page=biodata"><i class="fa fa-plus-square-o"></i> Form Biodata</a>
           </li>
-          <li>
-            <a href="index.php?page=pendaftaran"><i class="fa fa-heart"></i> Form Pendaftaran</a>
+          <li id="form_pendaftaran" style="display: none;">
+            <a href="index.php?page=pendaftaran"><i class="fa fa-plus-square-o"></i> Form Pendaftaran</a>
           </li>
 
           <!-- Dropdown-->
-          <li class="panel panel-default" id="dropdown">
+          <li class="panel panel-default" id="dropdown" style="display: none;">
             <a data-toggle="collapse" href="#dropdown-lvl1">
-              <i class="fa fa-diamond"></i> DATA
+              <i class="fa fa-file-text-o"></i> DATA
               <span class="caret"></span>
             </a>
             <!-- Dropdown level 1 -->
@@ -124,7 +128,7 @@ $row = mysqli_fetch_assoc($status1);
             </div>
           </li>
           <li>
-            <a href="cetak_pdf.php" id="cetak"><span class="glyphicon glyphicon-signal"></span> Cetak Kartu</a>
+            <a href="cetak_pdf.php" id="cetak" target="_blank"><span class="fa fa-id-card-o"></span> Cetak Kartu</a>
           </li>
         </ul>
       </div>
@@ -144,6 +148,9 @@ $row = mysqli_fetch_assoc($status1);
 
 <?php if (mysqli_num_rows($biodata1) > 0) { ?>
   <script>
+    $(document).ready(function() {
+      $('#form_pendaftaran').css('display', 'block');
+    });
     $(document).ready(function() {
       $('a[href^="index.php?page=biodata"]').each(function() {
         var oldUrl = $(this).attr("href");
@@ -169,7 +176,13 @@ $row = mysqli_fetch_assoc($status1);
 
 <?php if (mysqli_num_rows($pendaftaran1) > 0 && mysqli_num_rows($biodata1) > 0) { ?>
 
-  <?php if ($row['nama_status'] == "Lulus" && mysqli_num_rows($biodata1) > 0) { ?>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $('#dropdown').css('display', 'block');
+    });
+  </script>
+
+  <?php if ($row1['nama_status'] == "Lulus" && mysqli_num_rows($biodata1) > 0) { ?>
 
     <script type='text/javascript'>
       $(document).ready(function() {

@@ -17,7 +17,7 @@ $biodata = query("SELECT * FROM biodata WHERE user_id= '" . $_SESSION['user_id']
 
 ?>
 
-<h1>Update Biodata</h1>
+<h1 style="margin-top: 80px; margin-left:50px; margin-bottom: 30px;">Update Biodata</h1>
 
 <div class="container">
   <form action="" method="POST">
