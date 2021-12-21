@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
 
 
 <body>
-  <h1>Login</h1>
+  <h1 style="margin-bottom: 60px">Login</h1>
   <?php if (isset($error)) : ?>
     <h3 style="color: red;"></h3>
   <?php endif; ?>
@@ -70,7 +70,7 @@ if (isset($_POST['login'])) {
       <label for="password" class="mb-1">
         <h6 class="mb-0 text-sm">Password</h6>
       </label>
-      <input type="text" name="password" class="form-control" id="password" placeholder="Password" required />
+      <input type="password" name="password" class="form-control" id="password" placeholder="Password" required />
       <div class="invalid-feedback">
         Password
       </div>

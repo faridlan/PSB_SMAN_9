@@ -13,6 +13,8 @@ if (isset($_POST['submit'])) {
   }
 }
 
+
+
 ?>
 
 <style>
@@ -20,7 +22,7 @@ if (isset($_POST['submit'])) {
     display: block;
   }
 </style>
-<h1>Sign UP</h1>
+<h1 style="margin-bottom: 30px">Sign Up</h1>
 <!-- <form action="" method="POST">
   <ul>
     <li>
@@ -50,7 +52,7 @@ if (isset($_POST['submit'])) {
     </li>
   </ul>
 </form> -->
-<form action="" method="post" class="needs-validation" novalidate>
+<form action="" method="POST" class="needs-validation" novalidate>
   <div class="row px-3">
     <label for="username" class="mb-1">
       <h6 class="mb-0 text-sm">Username</h6>
@@ -69,7 +71,7 @@ if (isset($_POST['submit'])) {
     <label for="password" class="mb-1">
       <h6 class="mb-0 text-sm">password</h6>
     </label>
-    <input type="text" name="password" class="form-control" id="password" placeholder="Minimal 8 Karakter Password" required />
+    <input type="password" name="password" class="form-control" id="password" placeholder="Minimal 8 Karakter Password" required />
     <div class="invalid-feedback">
       Password Minimal 8 Karakter!
     </div>
@@ -78,7 +80,7 @@ if (isset($_POST['submit'])) {
     <label for="confirm_password" class="mb-1">
       <h6 class="mb-0 text-sm">Confirm Password</h6>
     </label>
-    <input type="text" name="confirm_password" class="form-control" id="confirm_password" placeholder="Insert Valid Confirm Password" required />
+    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Insert Valid Confirm Password" required />
     <div class="invalid-feedback">
       Confirm Password Tidak Cocok!
     </div>
