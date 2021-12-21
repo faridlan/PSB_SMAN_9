@@ -36,7 +36,8 @@ if ($_SESSION['level'] == '') {
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script> -->
-  <title>PSB ONLINE</title>
+  <title>ADMIN PSB SMAN 9</title>
+  <link rel="icon" type="image/x-icon" href="../logo.ico">
 </head>
 
 <body>
@@ -96,14 +97,31 @@ if ($_SESSION['level'] == '') {
             <a href="index.php?page=home"><i class="fa fa-dashboard"></i>Dashboard</a>
           </li>
           <li>
-            <a href="index.php?page=biodata"><i class="fa fa-puzzle-piece"></i>Biodata</a>
+            <a href="index.php?page=biodata"><i class="fa fa-book"></i>Biodata</a>
           </li>
           <li>
-            <a href="index.php?page=pendaftaran"><i class="fa fa-heart"></i>Pendaftaran</a>
+            <a href="index.php?page=pendaftaran"><i class="fa fa-book"></i>Pendaftaran</a>
           </li>
 
           <li>
-            <a href="index.php?page=detail" id="detail"><span class="glyphicon glyphicon-signal"></span>Detail User</a>
+            <a href="index.php?page=detail" id="detail"><span class="fa fa-user"></span>Detail User</a>
+          </li>
+
+          <li class="panel panel-default" id="dropdown">
+            <a data-toggle="collapse" href="#dropdown-lvl1">
+              <i class="fa fa-cog"></i> Settings
+              <span class="caret"></span>
+            </a>
+            <!-- Dropdown level 1 -->
+            <div id="dropdown-lvl1" class="panel-collapse collapse">
+              <div class="panel-body">
+                <ul class="nav navbar-nav">
+                  <li><a href="index.php?page=level">Level</a></li>
+                  <li><a href="index.php?page=status">Status</a></li>
+                  <li><a href="index.php?page=jurusan">Jurusan</a></li>
+                </ul>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
