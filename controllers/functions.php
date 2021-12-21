@@ -16,8 +16,8 @@ function signup($data)
 {
   global $conn;
 
-  $username = strtolower(stripslashes($data['username']));
-  $email = $data['email'];
+  $username = htmlspecialchars(strtolower(stripslashes($data['username'])));
+  $email = htmlspecialchars($data['email']);
   $password = mysqli_real_escape_string($conn, $data['password']);
   $confirm_password = mysqli_real_escape_string($conn, $data['confirm_password']);
 
@@ -38,8 +38,13 @@ function signup($data)
       alert('Confirm Password Tidak Sesuai');
     </script>
     ";
+    $errConfirm = 'Confirm Password Tidak Sesuai';
     return false;
   }
+
+  // if (strlen($password) < 8) {
+  //   return false;
+  // }
 
   $password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -52,17 +57,17 @@ function tambah_biodata($data)
 {
   global $conn;
 
-  $fullname = $data['fullname'];
-  $nisn = $data['nisn'];
-  $alamat = $data['alamat'];
-  $jenis_kelamin = $data['jenis_kelamin'];
-  $agama = $data['agama'];
-  $tempat_lahir = $data['tempat_lahir'];
-  $tgl_lahir = $data['tgl_lahir'];
-  $asal_sekolah = $data['asal_sekolah'];
-  $no_telp = $data['no_telp'];
-  $nama_ortu = $data['nama_ortu'];
-  $user_id = $data['user_id'];
+  $fullname = htmlspecialchars($data['fullname']);
+  $nisn =  htmlspecialchars($data['nisn']);
+  $alamat =  htmlspecialchars($data['alamat']);
+  $jenis_kelamin =  htmlspecialchars($data['jenis_kelamin']);
+  $agama =  htmlspecialchars($data['agama']);
+  $tempat_lahir =  htmlspecialchars($data['tempat_lahir']);
+  $tgl_lahir =  htmlspecialchars($data['tgl_lahir']);
+  $asal_sekolah =  htmlspecialchars($data['asal_sekolah']);
+  $no_telp =  htmlspecialchars($data['no_telp']);
+  $nama_ortu =  htmlspecialchars($data['nama_ortu']);
+  $user_id =  htmlspecialchars($data['user_id']);
 
   $query = "INSERT INTO biodata VALUES ('','$fullname', '$nisn', '$alamat', '$jenis_kelamin', '$agama', '$tempat_lahir', 
             '$tgl_lahir', '$asal_sekolah', '$no_telp',
@@ -85,21 +90,23 @@ function tambah_pendaftaran($data)
   $char = '2021';
   $resKode = $char . sprintf('%03s', $i);
 
-  $jurusan_id = $data['jurusan_id'];
-  $nilai_mtk = $data['nilai_mtk'];
-  $nilai_ipa = $data['nilai_ipa'];
-  $nilai_ing = $data['nilai_ing'];
-  $nilai_ind = $data['nilai_ind'];
-  $user_id = $data['user_id'];
+  $jurusan_id = htmlspecialchars($data['jurusan_id']);
+  $nilai_mtk = htmlspecialchars($data['nilai_mtk']);
+  $nilai_ipa = htmlspecialchars($data['nilai_ipa']);
+  $nilai_ing = htmlspecialchars($data['nilai_ing']);
+  $nilai_ind = htmlspecialchars($data['nilai_ind']);
+  $nilai_ind = htmlspecialchars($data['nilai_ind']);
+  $tgl_pend = date('Y-m-d');
+  $user_id = htmlspecialchars($data['user_id']);
 
   $ijazah = upload_pdf();
   if (!$ijazah) {
     return false;
   }
 
-  $query = "INSERT INTO pendaftaran (id_pendaftaran,jurusan_id, nilai_mtk, nilai_ipa, nilai_ing, nilai_ind, ijazah, user_id) VALUES
+  $query = "INSERT INTO pendaftaran (id_pendaftaran,jurusan_id, nilai_mtk, nilai_ipa, nilai_ing, nilai_ind, ijazah, tgl_pend ,user_id) VALUES
             ('$resKode','$jurusan_id', '$nilai_mtk', '$nilai_ipa', '$nilai_ing', '$nilai_ind',
-            '$ijazah', '$user_id')";
+            '$ijazah', '$tgl_pend' ,'$user_id')";
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
@@ -121,16 +128,16 @@ function update_biodata($data)
 {
   global $conn;
 
-  $fullname = $data['fullname'];
-  $nisn = $data['nisn'];
-  $alamat = $data['alamat'];
-  $jenis_kelamin = $data['jenis_kelamin'];
-  $agama = $data['agama'];
-  $tempat_lahir = $data['tempat_lahir'];
-  $asal_sekolah = $data['asal_sekolah'];
-  $no_telp = $data['no_telp'];
-  $nama_ortu = $data['nama_ortu'];
-  $user_id = $data['user_id'];
+  $fullname = htmlspecialchars($data['fullname']);
+  $nisn = htmlspecialchars($data['nisn']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $jenis_kelamin = htmlspecialchars($data['jenis_kelamin']);
+  $agama = htmlspecialchars($data['agama']);
+  $tempat_lahir = htmlspecialchars($data['tempat_lahir']);
+  $asal_sekolah = htmlspecialchars($data['asal_sekolah']);
+  $no_telp = htmlspecialchars($data['no_telp']);
+  $nama_ortu = htmlspecialchars($data['nama_ortu']);
+  $user_id = htmlspecialchars($data['user_id']);
 
   $query = "UPDATE biodata SET fullname='$fullname', nisn='$nisn', alamat='$alamat', jenis_kelamin='$jenis_kelamin', agama = '$agama',
             tempat_lahir='$tempat_lahir', asal_sekolah='$asal_sekolah', no_telp='$no_telp', nama_ortu='$nama_ortu' 
@@ -144,11 +151,11 @@ function update_pendaftaran($data)
 {
   global $conn;
 
-  $jurusan_id = $data['jurusan_id'];
-  $nilai_mtk = $data['nilai_mtk'];
-  $nilai_ipa = $data['nilai_ipa'];
-  $nilai_ing = $data['nilai_ing'];
-  $nilai_ind = $data['nilai_ind'];
+  $jurusan_id = htmlentities($data['jurusan_id']);
+  $nilai_mtk = htmlspecialchars($data['nilai_mtk']);
+  $nilai_ipa = htmlspecialchars($data['nilai_ipa']);
+  $nilai_ing = htmlspecialchars($data['nilai_ing']);
+  $nilai_ind = htmlspecialchars($data['nilai_ind']);
   $user_id = $data['user_id'];
 
   $ijazah_lama = $data['ijazah_lama'];
@@ -276,4 +283,38 @@ function upload_pdf()
   move_uploaded_file($tmpName, $target_path);
 
   return $newNameFile;
+}
+
+function tambah_jurusan($data)
+{
+  global $conn;
+
+  $nama_jurusan = $data['nama_jurusan'];
+
+  $query = "INSERT INTO jurusan VALUES ('', '$nama_jurusan')";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+function tambah_level($data)
+{
+  global $conn;
+
+  $nama_level = $data['nama_level'];
+
+  $query = "INSERT INTO level VALUES ('', '$nama_level')";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
+function tambah_status($data)
+{
+  global $conn;
+
+  $nama_status = $data['nama_status'];
+
+  $query = "INSERT INTO status VALUES ('', '$nama_status')";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
 }
